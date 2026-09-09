@@ -1,0 +1,27 @@
+name: Formula Audit
+
+on:
+  pull_request:
+    paths:
+      - "Formula/**"
+  push:
+    branches: [master, main]
+    paths:
+      - "Formula/**"
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Syntax check Formula
+        run: |
+          ruby -c Formula/blueprint.rb
+
+      - name: Note on bottle placeholders
+        run: |
+          if grep -q '0000000000000000000000000000000000000000000000000000000000000000' Formula/blueprint.rb; then
+            echo "::warning::Formula still has placeholder sha256 values; replace after first CLI release."
+          fi
