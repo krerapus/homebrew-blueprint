@@ -9,6 +9,8 @@ Binaries/archives are produced by [`krerapus/agent-harness-blueprint`](https://g
 
 ```bash
 brew tap krerapus/blueprint https://github.com/krerapus/homebrew-blueprint
+# Homebrew 6+: trust once if required
+brew trust --formula krerapus/blueprint/blueprint
 brew install blueprint
 blueprint --version
 blueprint assets install core
