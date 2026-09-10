@@ -12,16 +12,43 @@ on:
 
 jobs:
   audit:
-    runs-on: macos-14
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
       - name: Syntax check Formula
-        run: |
-          ruby -c Formula/blueprint.rb
+        run: ruby -c Formula/blueprint.rb
 
-      - name: Note on bottle placeholders
+      - name: Reject placeholder sha256
         run: |
+          set -euo pipefail
           if grep -q '0000000000000000000000000000000000000000000000000000000000000000' Formula/blueprint.rb; then
-            echo "::warning::Formula still has placeholder sha256 values; replace after first CLI release."
+            echo "::error::Formula contains placeholder sha256 (64 zeros). Publish CLI release assets and bump via scripts/bump-homebrew-formula.sh"
+            exit 1
           fi
+          # Every platform url must reference a GitHub Release download.
+          count="$(grep -c 'releases/download/v' Formula/blueprint.rb || true)"
+          test "$count" -ge 4
+
+      - name: Validate url/sha256 pairing
+        run: |
+          python3 - <<'PY'
+          import pathlib, re, sys
+          text = pathlib.Path("Formula/blueprint.rb").read_text()
+          blocks = re.findall(
+              r'url\s+"(https://github.com/krerapus/agent-harness-blueprint/releases/download/v[^"]+)"\s*\n\s*sha256\s+"([0-9a-fA-F]{64})"',
+              text,
+          )
+          if len(blocks) < 4:
+              print(f"expected >=4 url/sha256 pairs, got {len(blocks)}", file=sys.stderr)
+              sys.exit(1)
+          for url, sha in blocks:
+              if sha == "0" * 64:
+                  print(f"placeholder sha for {url}", file=sys.stderr)
+                  sys.exit(1)
+              name = url.rsplit("/", 1)[-1]
+              if not re.match(r"blueprint_\d+\.\d+\.\d+_(darwin|linux)_(arm64|amd64)\.tar\.gz$", name):
+                  print(f"unexpected asset name in url: {name}", file=sys.stderr)
+                  sys.exit(1)
+              print(f"OK {name} {sha[:12]}…")
+          PY
