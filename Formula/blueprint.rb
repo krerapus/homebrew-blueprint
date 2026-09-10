@@ -40,7 +40,7 @@ class Blueprint < Formula
     libexec.install "contributor" if Dir.exist?("contributor")
 
     chmod 0755, libexec/"blueprint"
-    (bin/"blueprint").write_exec_script libexec/"blueprint"
+    bin.write_exec_script libexec/"blueprint"
   end
 
   def caveats
