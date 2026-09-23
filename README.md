@@ -46,23 +46,41 @@ The Formula installs the **full** release tree under `libexec` and exposes `bin/
 
 ## How to use
 
+Tap name is `krerapus/blueprint` (GitHub repo `homebrew-blueprint`). Homebrew resolves the short tap to `https://github.com/krerapus/homebrew-blueprint`.
+
 ```bash
-brew tap krerapus/blueprint https://github.com/krerapus/homebrew-blueprint
-# Homebrew 6+: trust once if required
+# Short form (preferred) — or pass the URL explicitly if you prefer
+brew tap krerapus/blueprint
+# brew tap krerapus/blueprint https://github.com/krerapus/homebrew-blueprint
+
+# Homebrew 6+ (including 7): trust third-party formulae once before install
 brew trust --formula krerapus/blueprint/blueprint
-brew install blueprint
+
+brew install krerapus/blueprint/blueprint
 blueprint --version
+
+# Packs are not bottled in the Formula — install after first setup
 blueprint assets install core
+blueprint assets list
 ```
+
+The Formula caveats print the same pack reminder (`assets install core` / `assets list`). Config lives under `~/.config/blueprint/`; pack cache under `~/.cache/blueprint/assets/`.
 
 Upgrade:
 
 ```bash
 brew update
-brew upgrade blueprint
+brew upgrade krerapus/blueprint/blueprint
 ```
 
-After install, packs still come from [`assets-blueprint`](https://github.com/krerapus/assets-blueprint) via `blueprint assets …`.
+Uninstall (optional):
+
+```bash
+brew uninstall blueprint
+# brew untap krerapus/blueprint   # only if you also want to remove the tap
+```
+
+After install, packs still come from [`assets-blueprint`](https://github.com/krerapus/assets-blueprint) via `blueprint assets …`. For CLI checkout / sibling-pack testing, see `docs/local-development.md` in [`agent-harness-blueprint`](https://github.com/krerapus/agent-harness-blueprint).
 
 ## How to update source
 
