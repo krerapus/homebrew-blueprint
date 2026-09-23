@@ -69,8 +69,10 @@ Keep commits focused. Do not commit CLI source trees, release tarballs, or secre
    ```bash
    brew update
    brew uninstall blueprint || true
+   brew trust --formula krerapus/blueprint/blueprint   # once, if not already trusted
    brew install krerapus/blueprint/blueprint
    blueprint --version
+   blueprint assets install core
    blueprint assets list
    blueprint assets doctor --offline
    ```
