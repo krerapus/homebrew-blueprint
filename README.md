@@ -20,11 +20,15 @@ CLI Release (agent-harness-blueprint)
 
 Tap name: `krerapus/blueprint` (GitHub repo: `homebrew-blueprint`).
 
+Tap name is `krerapus/blueprint` (GitHub repo `homebrew-blueprint`). Homebrew resolves the short tap to `https://github.com/krerapus/homebrew-blueprint`.
+
 ```bash
 brew tap krerapus/blueprint
 brew trust --formula krerapus/blueprint/blueprint   # Homebrew 6+/7, once
 brew install krerapus/blueprint/blueprint
 blueprint --version
+
+# Packs are not bottled in the Formula — install after first setup
 blueprint assets install core
 blueprint assets list
 ```
