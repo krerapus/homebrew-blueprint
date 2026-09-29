@@ -11,14 +11,21 @@ This tap tracks Formula bumps for the Blueprint CLI. CLI source and release arti
 
 ### Added
 
+### Changed
+
+### Fixed
+
+## [1.5.0] - 2026-09-29
+
+### Added
+
 - Root `CHANGELOG.md` (Keep a Changelog) for Formula bump history
 - Root `LICENSE` (MIT)
 
 ### Changed
 
+- Formula bump for Blueprint CLI 1.5.0 (URLs / checksums from the CLI GitHub Release)
 - README / CONTRIBUTING trimmed to tap scope; link CLI release docs instead of duplicating process
-
-### Fixed
 
 ## [1.4.0] - 2026-09-10
 
@@ -26,5 +33,6 @@ This tap tracks Formula bumps for the Blueprint CLI. CLI source and release arti
 
 - Formula bump for Blueprint CLI 1.4.0 (URLs / checksums from the CLI GitHub Release)
 
-[Unreleased]: https://github.com/krerapus/homebrew-blueprint/compare/blueprint-1.4.0...HEAD
+[Unreleased]: https://github.com/krerapus/homebrew-blueprint/compare/blueprint-1.5.0...HEAD
+[1.5.0]: https://github.com/krerapus/homebrew-blueprint/commits/master
 [1.4.0]: https://github.com/krerapus/homebrew-blueprint/commits/master
