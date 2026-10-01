@@ -1,30 +1,30 @@
 class Blueprint < Formula
   desc "Agent harness CLI with independently versioned assets"
   homepage "https://github.com/krerapus/agent-harness-blueprint"
-  version "1.5.0"
+  version "1.6.0"
   license "MIT"
 
   # Artifacts are produced by agent-harness-blueprint GitHub Releases (source of truth).
   # URLs/sha256 are rewritten by scripts/bump-homebrew-formula.sh after each CLI release.
   on_macos do
     on_arm do
-      url "https://github.com/krerapus/agent-harness-blueprint/releases/download/v1.5.0/blueprint_1.5.0_darwin_arm64.tar.gz"
-      sha256 "a2bfd1b275ab8e833bf357295105ed4a095766c3b79abfa94a96d1c037ea2669"
+      url "https://github.com/krerapus/agent-harness-blueprint/releases/download/v1.6.0/blueprint_1.6.0_darwin_arm64.tar.gz"
+      sha256 "275a95fa5afb3459f54a8e607deb9fdf6494e068dbd7c557d13d5ff79a18302b"
     end
     on_intel do
-      url "https://github.com/krerapus/agent-harness-blueprint/releases/download/v1.5.0/blueprint_1.5.0_darwin_amd64.tar.gz"
-      sha256 "a2bfd1b275ab8e833bf357295105ed4a095766c3b79abfa94a96d1c037ea2669"
+      url "https://github.com/krerapus/agent-harness-blueprint/releases/download/v1.6.0/blueprint_1.6.0_darwin_amd64.tar.gz"
+      sha256 "275a95fa5afb3459f54a8e607deb9fdf6494e068dbd7c557d13d5ff79a18302b"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/krerapus/agent-harness-blueprint/releases/download/v1.5.0/blueprint_1.5.0_linux_arm64.tar.gz"
-      sha256 "a2bfd1b275ab8e833bf357295105ed4a095766c3b79abfa94a96d1c037ea2669"
+      url "https://github.com/krerapus/agent-harness-blueprint/releases/download/v1.6.0/blueprint_1.6.0_linux_arm64.tar.gz"
+      sha256 "275a95fa5afb3459f54a8e607deb9fdf6494e068dbd7c557d13d5ff79a18302b"
     end
     on_intel do
-      url "https://github.com/krerapus/agent-harness-blueprint/releases/download/v1.5.0/blueprint_1.5.0_linux_amd64.tar.gz"
-      sha256 "a2bfd1b275ab8e833bf357295105ed4a095766c3b79abfa94a96d1c037ea2669"
+      url "https://github.com/krerapus/agent-harness-blueprint/releases/download/v1.6.0/blueprint_1.6.0_linux_amd64.tar.gz"
+      sha256 "275a95fa5afb3459f54a8e607deb9fdf6494e068dbd7c557d13d5ff79a18302b"
     end
   end
 
